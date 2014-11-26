@@ -103,7 +103,7 @@
   function bindInsertToAdd(options) {
     options.add.bind('click.nested-fields', function(e) {
       e.preventDefault();
-      insertItemWithCallbacks(null, options);
+      insertItemWithCallbacks(null, options, e);
     });
   }
 
@@ -132,7 +132,7 @@
     return newItem;
   }
 
-  function insertItemWithCallbacks(onInsertCallback, options) {
+  function insertItemWithCallbacks(onInsertCallback, options, e) {
     var newItem = prepareTemplate(options);
 
     function insert() {
@@ -153,7 +153,7 @@
     }
 
     if(!options.skipAfter) {
-      options.afterInsert(newItem);
+      options.afterInsert(newItem, e);
     }
 
     return newItem;
